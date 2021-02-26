@@ -1,0 +1,62 @@
+
+
+
+/* Header section */
+
+
+.header{
+  position:relative;
+  height: 98vh;                                                       /* 95% of the view port heigt */
+  background-image: linear-gradient(                                  /* it has two background images one is COLOR gradient*/
+    to right bottom,                                                  /* the other has image. gradient sits top on image*/
+    rgba($color-primary-light, 0.4),                                        /* two gradient means  to first one to second*/
+    rgba($color-primary6dark, 0.8)),                                        /* using opacity bottom image (fourth of the rgba value) image can be viewed*/
+    url(../img/hero.jpg);
+  background-size: cover;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+  background-position: bottom;
+
+  @supports (clip-path: polygon(0,0)) or (-webkit-clip-path: polygon(0,0)){
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    height: 96vh;
+  }
+
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+    only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+    only screen and (min-width:120em){
+    background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.3),
+      rgba($color-primary-dark, 0.5)),
+      url(../img/hero.jpg);
+      height: 70vh;
+
+  }
+
+
+  @include respond(phone){
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+
+  &__logo-box{
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo{
+    height: 7.5rem;
+  }
+
+  &__text-box{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+  }
+            /* it just clips the picture using coordinates just like graph */
+}
